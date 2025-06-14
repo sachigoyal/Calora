@@ -44,7 +44,7 @@ export default async function EventsPage() {
                 You do not have any events yet. Create your first event to get
                 started!
               </span>
-              <Button asChild size="lg" className="w-full">
+              <Button asChild size="lg" className="w-full mt-1">
                 <Link href="/events/new">
                   <CalendarPlus className="size-6 mr-1" />
                   <span className="text-md">New Event</span>
