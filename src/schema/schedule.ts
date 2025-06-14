@@ -36,8 +36,8 @@ export const scheduleFormSchema = z.object({
         if (overlaps) {
           ctx.addIssue({
             code: "custom",
-            message: "Availability overlaps with another",
-            path: [index],
+            message: "Overlaps with another time slot",
+            path: [index, "startTime"],
           });
         }
         if (
@@ -45,8 +45,13 @@ export const scheduleFormSchema = z.object({
         ) {
           ctx.addIssue({
             code: "custom",
-            message: "End time must be after start time",
-            path: [index],
+            message: "Must be before end time",
+            path: [index, "startTime"],
+          });
+          ctx.addIssue({
+            code: "custom",
+            message: "Must be after start time",
+            path: [index, "endTime"],
           });
         }
       });
