@@ -1,7 +1,6 @@
-import EventForm from "@/components/forms/EventForm";
+
 import { Button } from "@/components/ui/button";
 import { db } from "@/drizzle/db";
-import { UserButton, UserProfile } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { CalendarPlus, CalendarRange } from "lucide-react";
 import Link from "next/link";

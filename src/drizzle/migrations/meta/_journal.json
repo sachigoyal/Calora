@@ -8,6 +8,13 @@
       "when": 1749565773572,
       "tag": "0000_glossy_namora",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1749907178259,
+      "tag": "0001_melted_katie_power",
+      "breakpoints": true
     }
   ]
 }
