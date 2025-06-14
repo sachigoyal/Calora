@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { db } from "@/drizzle/db";
 import { auth } from "@clerk/nextjs/server";
@@ -30,14 +29,14 @@ export default async function EventsPage() {
         </div>
         {events.length > 0 ? (
           <div className="w-full max-w-7xl mx-auto my-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {events.map((event) => (
-              < EventCard key={event.id} {...event} />
-            ))}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {events.map(event => (
+                <EventCard key={event.id} {...event} />
+              ))}
+            </div>
           </div>
         ) : (
-          <div className=" flex items-center justify-center h-[70vh]">
+          <div className=" flex items-center mt-16 md:mt-24">
             <div className="flex gap-4 max-w-4xl flex-col mx-auto">
               <CalendarRange size={50} className="text-muted-foreground" />
               <span className="text-2xl font-semibold text-muted-foreground">
