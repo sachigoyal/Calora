@@ -27,7 +27,7 @@ updatedAt,
 })
 
 export const scheduleRelations = relations(ScheduleTable, ({many}) =>({
-    avalabilities: many(ScheduleAvailabilitiesTable),
+    availabilities: many(ScheduleAvailabilitiesTable),
 }))
 
 export const scheduleDayOfWeekEnum = pgEnum("day", DAYS_OF_WEEK_IN_ORDER)
@@ -36,11 +36,11 @@ export const ScheduleAvailabilitiesTable = pgTable("scheduleAvailabilities", {
     id: uuid("id").primaryKey().defaultRandom(),
     scheduleId: uuid("scheduleId").notNull().references(() => ScheduleTable.id, { onDelete: "cascade" }),
     startTime: text("startTime").notNull(),
-    endTime: text("endTime").notNull(), 
-    dayOfweek: scheduleDayOfWeekEnum("dayOfweek").notNull(),
+    endTime: text("endTime").notNull(),
+    dayOfWeek: scheduleDayOfWeekEnum("dayOfWeek").notNull(),
 },
 table => ({
-    scheduIdIndex: index("scheduleIdIndex").on(table.scheduleId)
+    scheduleIdIndex: index("scheduleIdIndex").on(table.scheduleId)
 }))
 
 export const ScheduleAvailabilityRelations = relations(ScheduleAvailabilitiesTable, ({one}) => ({
