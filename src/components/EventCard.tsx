@@ -66,7 +66,7 @@ export function EventCard({
     <div>
       <Card
         className={cn(
-          "flex flex-col hover:shadow-md hover:cursor-pointer bg-muted/50",
+          "flex flex-col hover:shadow-md hover:cursor-pointer bg-muted/50 h-full",
           !isActive && "border-secondary/50"
         )}
       >
