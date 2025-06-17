@@ -43,7 +43,7 @@ export async function getCalendarEventTimes(
 }
 
 
-export async function createCalendar({
+export async function createCalendarEvent({
     clerkUserId,
   guestName,
   guestEmail,
