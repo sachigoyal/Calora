@@ -9,7 +9,7 @@ import {
   CardFooter,
 } from "./ui/card";
 import { cn } from "@/lib/utils";
-import { Clock, Trash2 } from "lucide-react";
+import { ArrowRight, Clock, Trash2 } from "lucide-react";
 import { CopyEventButton } from "./CopyEventButton";
 import { Button } from "./ui/button";
 import Link from "next/link";
@@ -109,10 +109,17 @@ export function EventCard({
             </p>
           </CardContent>
         )}
-        <CardFooter className="relative">
+        <CardFooter className="relative ">
+          <div className="flex gap-2 justify-end absolute bottom-1 right-4">
+          <Button asChild >
+            <Link href={`${location.origin}/book/${clerkUserId}/${id}`}>
+              Book Now
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </Button>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="destructive" disabled={isDeletePending}  className="cursor-pointer absolute bottom-4 right-4">
+              <Button variant="destructive" disabled={isDeletePending}  className="cursor-pointer">
                 <Trash2 className="h-4 w-4" />
                 Delete
               </Button>
@@ -140,6 +147,7 @@ export function EventCard({
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+          </div>
         </CardFooter>
       </Card>
     </div>
