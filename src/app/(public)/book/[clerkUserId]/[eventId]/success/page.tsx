@@ -1,14 +1,17 @@
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { db } from "@/drizzle/db";
 import { formatDateTime } from "@/lib/formatters";
 import { clerkClient } from "@clerk/nextjs/server";
-import { CheckCircle2 } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function SuccessPage({
@@ -62,6 +65,16 @@ export default async function SuccessPage({
             You can safely close this page now.
           </p>
         </CardContent>
+        <CardFooter className="flex flex-col gap-2">
+          <Button asChild className="w-full">
+            <Link href={`/book/${clerkUserId}`}>Go back
+            <ArrowRight className="size-4" />
+            </Link>
+          </Button>
+          <Button asChild className="w-full" variant="outline">
+            <Link href="/events">Go to Home</Link>
+          </Button>
+        </CardFooter>
       </Card>
     </div>
   );
