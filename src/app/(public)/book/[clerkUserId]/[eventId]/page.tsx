@@ -1,4 +1,3 @@
-
 import { MeetingForm } from "@/components/forms/MeetingForm";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +17,7 @@ import {
   endOfDay,
   roundToNearestMinutes,
 } from "date-fns";
-import { ArrowLeft, ArrowRight, CalendarX } from "lucide-react";
+import { ArrowRight, CalendarX } from "lucide-react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -48,9 +47,16 @@ export default async function BookEventPage({
   if (validTimes.length === 0) {
     return <NoTimeSlot event={event} calendarUser={calendarUser} />;
   }
+  console.log("Valid times after filtering:", validTimes.length);
 
+  console.log("Debug info:", {
+    startDate,
+    endDate,
+    eventId: event.id,
+    clerkUserId,
+  });
   return (
-  <div className="w-full min-h-screen max-w-2xl mx-auto flex justify-center items-center">
+    <div className="w-full min-h-screen max-w-2xl mx-auto flex justify-center items-center">
       <Card className="p-5">
         <MeetingForm
           validTimes={validTimes}

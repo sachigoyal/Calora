@@ -11,7 +11,9 @@ export async function getValidateTimeFromSchedule(
   event: { clerkUserId: string; durationInMinutes: number }
 ) {
   const start = timesInOrder[0];
+  console.log("Start time:", start);
   const end = timesInOrder.at(-1);
+  console.log("End time:", end);
 
   if (start == null || end == null) return [];
 
@@ -20,6 +22,7 @@ export async function getValidateTimeFromSchedule(
       eq(userColId, event.clerkUserId),
     with: { availabilities: true },
   });
+  console.log("Schedule:", schedule);
 
   if (schedule == null) return [];
 
@@ -27,6 +30,7 @@ export async function getValidateTimeFromSchedule(
     schedule.availabilities,
     a => a.dayOfWeek
   );
+  console.log("Grouped availabilities:", groupedAvailabilities);
 
   const eventTimes = await getCalendarEventTimes(event.clerkUserId, {
     start,
@@ -75,23 +79,17 @@ function getAvailabilities(
 
   if (isMonday(date)) {
     availabilities = groupedAvailabilities.monday
-  }
-  if (isTuesday(date)) {
+  } else if (isTuesday(date)) {
     availabilities = groupedAvailabilities.tuesday
-  }
-  if (isWednesday(date)) {
+  } else if (isWednesday(date)) {
     availabilities = groupedAvailabilities.wednesday
-  }
-  if (isThursday(date)) {
+  } else if (isThursday(date)) {
     availabilities = groupedAvailabilities.thursday
-  }
-  if (isFriday(date)) {
+  } else if (isFriday(date)) {
     availabilities = groupedAvailabilities.friday
-  }
-  if (isSaturday(date)) {
+  } else if (isSaturday(date)) {
     availabilities = groupedAvailabilities.saturday
-  }
-  if (isSunday(date)) {
+  } else if (isSunday(date)) {
     availabilities = groupedAvailabilities.sunday
   }
 
