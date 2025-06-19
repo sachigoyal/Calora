@@ -68,7 +68,7 @@ export default async function BookEventPage({
   );
 }
 
-function NoTimeSlot({
+export function NoTimeSlot({
   event,
   calendarUser,
 }: {
